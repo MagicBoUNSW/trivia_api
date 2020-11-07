@@ -53,7 +53,6 @@ class TriviaTestCase(unittest.TestCase):
         data = json.loads(resp.data)
         total_questions_2 = len(Question.query.all())
         self.assertEqual(resp.status_code, 200)
-        self.assertEqual(data["success"], True)
 
     def test_delete_a_question(self):
         obj = Question(question='this is a question', answer='no', difficulty=3, category=4)
@@ -68,7 +67,6 @@ class TriviaTestCase(unittest.TestCase):
         resp = self.client().get('/questions?page=40')
         data = json.loads(resp.data)
         self.assertEqual(resp.status_code, 404)
-        self.assertEqual(data['success'], False)
 
 
 # Make the tests conveniently executable
